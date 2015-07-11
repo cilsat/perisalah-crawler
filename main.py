@@ -15,22 +15,22 @@ def article_parse(_sources):
             with open('output.txt','a') as f:
                 [f.write(sentence + '\n') for sentence in sentences]
 
-def rbuild():
+def rbuild(sources, depth):
     pass
 
 def main(argv):
-    sourcefile = argv[1:]
+    sourcefile = argv[1]
 
     config = Config()
     config.language = 'id'
     config.MIN_SENT_COUNT = 20
-    config.memoize = False
+    config.memoize = True
     config.fetch_images = False
 
-    with open(sourcefile, 'r') as f:
+    with open(os.path.join(os.path.dirname(__file__), sourcefile), 'r') as f:
         sourcelist = f.read().strip().split('\n')
     
-
+    sources = [newspaper.build(url=source,config=config) for source in sourcelist]
     news_pool.set(sources, threads_per_source = 4)
     news_pool.join()
 
