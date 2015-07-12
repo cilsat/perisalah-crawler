@@ -70,7 +70,6 @@ def main(argv):
             with open(os.path.join(memo_cache_path, '.top_sources'), 'r') as f:
                 sourcelist = f.read().split('\n')
 
-
     # this config applies to the entire crawling process
     config = Config()
     config.language = 'id'
