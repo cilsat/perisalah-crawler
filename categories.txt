@@ -1,0 +1,9 @@
+# A list of hardcoded regexes to recognise categories in each domain. 
+# An ugly fucking hack if there ever was one.
+# Each line defines a set of regexes to the corresponding domain in sources.txt.
+# After running source.set_categories() in our extended Source class, we manually recheck the url list for urls that match the patterns specified here. This is so we don't need to extend the ContentExtractor class.
+# Then we append this to the list of current categories.
+
+print.kompas.com,rubrik
+www.kompas.com,keuangan,hardware
+
